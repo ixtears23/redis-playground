@@ -2,19 +2,23 @@ package junseok.snr.redisplayground.lesson.domain;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalTime;
 
 @Entity
-@Table
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LessonSetting {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer seqLessonSettingHistory;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer seqLessonSetting;
     private Integer seqPartnerLesson;
-    private Character autoOpenSettingType;
+    @Enumerated(EnumType.STRING)
+    private AutoOpenSettingType autoOpenSettingType;
     private Integer autoOpenSettingCycle;
     private Integer autoOpenSettingPeriod;
     private Byte autoOpenSettingDay;

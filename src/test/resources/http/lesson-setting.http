@@ -1,0 +1,33 @@
+### lessone setting 조회
+GET http://localhost:8080/api/v1/lesson/1
+
+### lessone setting 등록
+POST http://localhost:8080/api/v1/lesson
+Content-Type: application/json
+
+{
+  "seqPartnerLesson": 0,
+  "autoOpenSettingType": "D",
+  "autoOpenSettingCycle": 0,
+  "autoOpenSettingPeriod": 0,
+  "autoOpenSettingDay": "",
+  "autoOpenSettingTime": "",
+  "autoCancelSettingCount": "",
+  "autoCancelSettingTime": 0
+}
+
+### lessone setting 수정
+PUT http://localhost:8080/api/v1/lesson
+Content-Type: application/json
+
+{
+  "seqLessonSetting": 0,
+  "seqPartnerLesson": 0,
+  "autoOpenSettingType": "",
+  "autoOpenSettingCycle": 0,
+  "autoOpenSettingPeriod": 0,
+  "autoOpenSettingDay": "",
+  "autoOpenSettingTime": "",
+  "autoCancelSettingCount": "",
+  "autoCancelSettingTime": 0
+}
