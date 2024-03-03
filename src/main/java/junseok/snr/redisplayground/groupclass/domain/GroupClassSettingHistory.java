@@ -1,4 +1,4 @@
-package junseok.snr.redisplayground.lesson.domain;
+package junseok.snr.redisplayground.groupclass.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,18 +11,17 @@ import java.time.LocalTime;
 @Builder
 @Getter
 @Entity
-public class LessonSettingHistory {
+public class GroupClassSettingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer seqLessonSettingHistory;
-    private Integer seqLessonSetting;
-    private Integer seqPartnerLesson;
-    @Enumerated(EnumType.ORDINAL)
-    private AutoOpenSettingType autoOpenSettingType;
-    private Integer autoOpenSettingCycle;
-    private Integer autoOpenSettingPeriod;
-    private Byte autoOpenSettingDay;
-    private LocalTime autoOpenSettingTime;
+    private Integer seqGroupClassSetting;
+    @Enumerated(EnumType.STRING)
+    private AutoPublishSettingType autoPublishSettingType;
+    private Integer autoPublishSettingCycle;
+    private Integer autoPublishSettingPeriod;
+    private Byte autoPublishSettingDay;
+    private LocalTime autoPublishSettingTime;
     private Byte autoCancelSettingCount;
     private Integer autoCancelSettingTime;
     private LocalDateTime regDt;

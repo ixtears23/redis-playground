@@ -1,4 +1,4 @@
-package junseok.snr.redisplayground.lesson.domain;
+package junseok.snr.redisplayground.groupclass.domain;
 
 
 import jakarta.persistence.*;
@@ -13,19 +13,18 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class LessonSetting implements Serializable {
+public class GroupClassSetting implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer seqLessonSetting;
-    private Integer seqPartnerLesson;
+    private Integer seqGroupClassSetting;
     @Enumerated(EnumType.STRING)
-    private AutoOpenSettingType autoOpenSettingType;
-    private Integer autoOpenSettingCycle;
-    private Integer autoOpenSettingPeriod;
-    private Byte autoOpenSettingDay;
-    private LocalTime autoOpenSettingTime;
+    private AutoPublishSettingType autoPublishSettingType;
+    private Integer autoPublishSettingCycle;
+    private Integer autoPublishSettingPeriod;
+    private Byte autoPublishSettingDay;
+    private LocalTime autoPublishSettingTime;
     private Byte autoCancelSettingCount;
     private Integer autoCancelSettingTime;
 }
