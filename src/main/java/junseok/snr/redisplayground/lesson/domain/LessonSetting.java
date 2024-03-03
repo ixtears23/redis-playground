@@ -4,6 +4,7 @@ package junseok.snr.redisplayground.lesson.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @Entity
@@ -11,7 +12,9 @@ import java.time.LocalTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LessonSetting {
+@EqualsAndHashCode
+public class LessonSetting implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

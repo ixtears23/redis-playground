@@ -21,9 +21,9 @@ PUT http://localhost:8080/api/v1/lesson
 Content-Type: application/json
 
 {
-  "seqLessonSetting": 0,
+  "seqLessonSetting": 1,
   "seqPartnerLesson": 0,
-  "autoOpenSettingType": "",
+  "autoOpenSettingType": "W",
   "autoOpenSettingCycle": 0,
   "autoOpenSettingPeriod": 0,
   "autoOpenSettingDay": "",

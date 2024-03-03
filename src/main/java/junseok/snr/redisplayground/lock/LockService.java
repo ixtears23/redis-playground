@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 @Service
 public class LockService {
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
     public boolean acquireLock(String lockKey, long expireTime) {
         final Boolean success = redisTemplate.opsForValue().setIfAbsent(lockKey, "locked", expireTime, TimeUnit.SECONDS);

@@ -16,25 +16,25 @@ import java.util.Optional;
 public class LessonSettingServiceImpl implements LessonSettingService {
     private final LessonSettingRepository lessonSettingRepository;
     private final Environment environment;
-    @CachePut(value = "lessonSettingCache", key = "'lessoneSetting:' + #result.seqLessonSetting + ':' + T(java.util.Arrays).toString(environment.getActiveProfiles())")
+    @CachePut(value = "lessonSetting", key = "#result.seqLessonSetting + ':' + T(java.util.Arrays).stream(@environment.getActiveProfiles()).collect(T(java.util.stream.Collectors).joining(','))")
     @Override
     public LessonSetting create(LessonSetting lessonSetting) {
         return lessonSettingRepository.save(lessonSetting);
     }
 
-    @CachePut(value = "lessonSettingCache", key = "'lessoneSetting:' + #result.seqLessonSetting + ':' + T(java.util.Arrays).toString(environment.getActiveProfiles())")
+    @CachePut(value = "lessonSetting", key = "#result.seqLessonSetting + ':' + @environment.getActiveProfiles()")
     @Override
     public LessonSetting update(LessonSetting lessonSetting) {
         return lessonSettingRepository.save(lessonSetting);
     }
 
-    @CacheEvict(value = "lessonSettingCache", key = "'lessoneSetting:' + #id + ':' + T(java.util.Arrays).toString(environment.getActiveProfiles())")
+    @CacheEvict(value = "lessonSetting", key = "#id + ':' + @environment.getActiveProfiles()")
     @Override
     public void delete(int id) {
         lessonSettingRepository.deleteById(id);
     }
 
-    @Cacheable(value = "lessonSettingCache", key = "'lessoneSetting:' + #id + ':' + T(java.util.Arrays).toString(environment.getActiveProfiles())")
+    @Cacheable(value = "lessonSetting", key = "#id + ':' + @environment.getActiveProfiles()")
     @Override
     public Optional<LessonSetting> findById(int id) {
         return lessonSettingRepository.findById(id);
