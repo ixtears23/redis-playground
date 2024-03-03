@@ -1,37 +1,35 @@
 ### lesson setting 조회
-GET http://localhost:8080/api/v1/lesson/1
+GET http://localhost:8080/api/v1/group-class/1
 
 ### lesson setting 등록
-POST http://localhost:8080/api/v1/lesson
+POST http://localhost:8080/api/v1/group-class
 Content-Type: application/json
 
 {
-  "seqPartnerLesson": 0,
-  "autoOpenSettingType": "D",
-  "autoOpenSettingCycle": 0,
-  "autoOpenSettingPeriod": 0,
-  "autoOpenSettingDay": "",
-  "autoOpenSettingTime": "",
+  "autoPublishSettingType": "D",
+  "autoPublishSettingCycle": 0,
+  "autoPublishSettingPeriod": 0,
+  "autoPublishSettingDay": "",
+  "autoPublishSettingTime": "",
   "autoCancelSettingCount": "",
   "autoCancelSettingTime": 0
 }
 
 ### lesson setting 수정
-PUT http://localhost:8080/api/v1/lesson
+PUT http://localhost:8080/api/v1/group-class
 Content-Type: application/json
 
 {
-  "seqLessonSetting": 1,
-  "seqPartnerLesson": 0,
-  "autoOpenSettingType": "W",
-  "autoOpenSettingCycle": 0,
-  "autoOpenSettingPeriod": 0,
-  "autoOpenSettingDay": "",
-  "autoOpenSettingTime": "",
+  "seqGroupClassSetting": 2,
+  "autoPublishSettingType": "D",
+  "autoPublishSettingCycle": 0,
+  "autoPublishSettingPeriod": 0,
+  "autoPublishSettingDay": "",
+  "autoPublishSettingTime": "",
   "autoCancelSettingCount": "",
   "autoCancelSettingTime": 0
 }
 
 ### lesson setting 삭제
-DELETE http://localhost:8080/api/v1/lesson/1
+DELETE http://localhost:8080/api/v1/group-class/1
 Content-Type: application/json

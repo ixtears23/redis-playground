@@ -1,6 +1,7 @@
 package junseok.snr.redisplayground.config;
 
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -37,16 +38,16 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, String> redisTemplate() {
-        final RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+    public RedisTemplate<String, Object> redisTemplate() {
+        final RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
         return redisTemplate;
     }
     @Bean
-    public EnvironmentBasedKeyGenerator environmentBasedKeyGenerator(Environment environment) {
-        return new EnvironmentBasedKeyGenerator(environment);
+    public KeyGenerator profileAwareKeyGenerator(Environment environment) {
+        return new ProfileAwareKeyGenerator(environment);
     }
 
 }
