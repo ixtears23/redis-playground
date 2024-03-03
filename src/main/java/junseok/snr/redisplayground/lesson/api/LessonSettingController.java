@@ -20,7 +20,6 @@ public class LessonSettingController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // LessonSetting 생성
     @PostMapping
     public ResponseEntity<LessonSetting> createLessonSetting(@RequestBody LessonSetting lessonSetting) {
         LessonSetting savedLessonSetting = lessonSettingService.create(lessonSetting);
@@ -31,6 +30,12 @@ public class LessonSettingController {
     public ResponseEntity<LessonSetting> updateLessonSetting(@RequestBody LessonSetting lessonSetting) {
         LessonSetting savedLessonSetting = lessonSettingService.update(lessonSetting);
         return ResponseEntity.ok(savedLessonSetting);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLessonSetting(@PathVariable Integer id) {
+        lessonSettingService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

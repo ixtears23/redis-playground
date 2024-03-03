@@ -7,5 +7,6 @@ import java.util.Optional;
 public interface LessonSettingService {
     LessonSetting create(LessonSetting lessonSetting);
     LessonSetting update(LessonSetting lessonSetting);
+    void delete(int id);
     Optional<LessonSetting> findById(int id);
 }

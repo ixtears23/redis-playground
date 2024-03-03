@@ -1,7 +1,7 @@
-### lessone setting 조회
+### lesson setting 조회
 GET http://localhost:8080/api/v1/lesson/1
 
-### lessone setting 등록
+### lesson setting 등록
 POST http://localhost:8080/api/v1/lesson
 Content-Type: application/json
 
@@ -16,7 +16,7 @@ Content-Type: application/json
   "autoCancelSettingTime": 0
 }
 
-### lessone setting 수정
+### lesson setting 수정
 PUT http://localhost:8080/api/v1/lesson
 Content-Type: application/json
 
@@ -31,3 +31,7 @@ Content-Type: application/json
   "autoCancelSettingCount": "",
   "autoCancelSettingTime": 0
 }
+
+### lesson setting 삭제
+DELETE http://localhost:8080/api/v1/lesson/1
+Content-Type: application/json
