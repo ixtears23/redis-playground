@@ -1,19 +1,23 @@
 package junseok.snr.redisplayground.groupclass.application.dto;
 
-import jakarta.persistence.*;
 import junseok.snr.redisplayground.groupclass.domain.AutoPublishSettingType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import lombok.NoArgsConstructor;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @Builder
 @Getter
-@RedisHash(value = "group-class-setting")
-public class GroupClassSettingDto {
-    @Id
+@NoArgsConstructor
+@AllArgsConstructor
+public class GroupClassSettingDto implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 42L;
+
     private Integer seqGroupClassSetting;
     private AutoPublishSettingType autoPublishSettingType;
     private Integer autoPublishSettingCycle;

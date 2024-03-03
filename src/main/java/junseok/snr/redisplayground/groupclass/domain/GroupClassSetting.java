@@ -4,7 +4,6 @@ package junseok.snr.redisplayground.groupclass.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalTime;
 
 @Entity
@@ -13,8 +12,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class GroupClassSetting implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class GroupClassSetting {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

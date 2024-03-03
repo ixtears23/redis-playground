@@ -19,7 +19,7 @@ public class GroupClassSettingServiceImpl implements GroupClassSettingService {
     private final GroupClassSettingRepository groupClassSettingRepository;
     private final GroupClassSettingMapper groupClassSettingMapper;
     private final GroupClassSettingDtoMapper groupClassSettingDtoMapper;
-    @Cacheable(value = "group-class-setting", keyGenerator = "profileAwareKeyGenerator")
+    @Cacheable(value = "group-class-setting", key = "#id + ':' + @environment.getActiveProfiles()")
     @Override
     public Optional<GroupClassSettingDto> findById(int id) {
         Optional<GroupClassSetting> groupClassSetting = groupClassSettingRepository.findById(id);
