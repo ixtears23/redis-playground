@@ -8,6 +8,28 @@ Content-Type: application/json
   "roomNumber": "101"
 }
 
+### Create or update a reservation
+POST http://localhost:8080/reservations/all
+Content-Type: application/json
+
+[
+  {
+    "id": "1",
+    "name": "JunSeok001",
+    "roomNumber": "10101"
+  },
+  {
+    "id": "2",
+    "name": "JunSeok002",
+    "roomNumber": "10202"
+  },
+  {
+    "id": "3",
+    "name": "JunSeok003",
+    "roomNumber": "10303"
+  }
+]
+
 ### Get a reservation by ID
 GET http://localhost:8080/reservations/1
 

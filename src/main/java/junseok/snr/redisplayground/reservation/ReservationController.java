@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/reservations")
@@ -15,6 +17,13 @@ public class ReservationController {
         Reservation savedReservation = reservationService.saveOrUpdateReservation(reservation);
         return ResponseEntity.ok(savedReservation);
     }
+
+    @PostMapping("/all")
+    public ResponseEntity<Void> createOrUpdateReservation(@RequestBody List<Reservation> reservations) {
+        reservationService.updateMultipleReservations(reservations);
+        return ResponseEntity.ok().build();
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservation(@PathVariable String id) {
