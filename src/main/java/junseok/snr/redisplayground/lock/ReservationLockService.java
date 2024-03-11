@@ -1,6 +1,5 @@
-package junseok.snr.redisplayground.reservation;
+package junseok.snr.redisplayground.lock;
 
-import junseok.snr.redisplayground.lock.LockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class ReservationService {
+public class ReservationLockService {
 
     private final LockService lockService;
     private static final String LOCK_KEY_TEMPLATE = "class_lock_%s";
