@@ -1,0 +1,15 @@
+### Create or update a reservation
+POST http://localhost:8080/reservations
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "JunSeok",
+  "roomNumber": "101"
+}
+
+### Get a reservation by ID
+GET http://localhost:8080/reservations/1
+
+### Delete a reservation
+DELETE http://localhost:8080/reservations/1
