@@ -1,6 +1,7 @@
 package junseok.snr.redisplayground.reservation;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class ReservationService {
@@ -28,7 +30,7 @@ public class ReservationService {
         reservationRepository.deleteById(id);
     }
 
-    @Transactional
+
     public void updateMultipleReservations(List<Reservation> reservations) {
         redisTemplate.execute(new SessionCallback<Object>() {
             @Override

@@ -1,4 +1,4 @@
-### Create or update a reservation
+### saveOrUpdateReservation
 POST http://localhost:8080/reservations
 Content-Type: application/json
 
@@ -8,7 +8,7 @@ Content-Type: application/json
   "roomNumber": "101"
 }
 
-### Create or update a reservation
+### updateMultipleReservations
 POST http://localhost:8080/reservations/all
 Content-Type: application/json
 
@@ -30,8 +30,8 @@ Content-Type: application/json
   }
 ]
 
-### Get a reservation by ID
+### findReservationById
 GET http://localhost:8080/reservations/1
 
-### Delete a reservation
+### deleteReservationById
 DELETE http://localhost:8080/reservations/1
