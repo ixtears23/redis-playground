@@ -15,7 +15,7 @@ import static io.awspring.cloud.sqs.listener.SqsHeaders.MessageSystemAttributes.
 
 @Slf4j
 @RequiredArgsConstructor
-@Component
+//@Component
 public class UserEventListeners {
     public static final String EVENT_TYPE_CUSTOM_HEADER = "eventType";
     private final UserRepository userRepository;
