@@ -1,4 +1,4 @@
-package junseok.snr.redisplayground.config;
+package junseok.snr.redisplayground.common.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.interceptor.KeyGenerator;

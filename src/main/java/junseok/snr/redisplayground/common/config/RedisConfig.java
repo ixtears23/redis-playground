@@ -1,4 +1,4 @@
-package junseok.snr.redisplayground.config;
+package junseok.snr.redisplayground.common.config;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
