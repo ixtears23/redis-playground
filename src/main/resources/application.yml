@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/junseok?serverTimezone=UTC
+    url: jdbc:mysql://localhost:53306/batch?serverTimezone=UTC
     driver-class-name: "com.mysql.cj.jdbc.Driver"
     username: root
     password: 1234
@@ -14,3 +14,6 @@ spring:
   sql:
     init:
       mode: always
+server:
+  port: 9877
+
