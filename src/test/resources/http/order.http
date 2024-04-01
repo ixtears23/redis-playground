@@ -1,0 +1,10 @@
+### save order
+POST http://localhost:9877/orders
+Content-Type: application/json
+
+{
+  "customerName": "Junseok",
+  "orderDetails": "장비 주문",
+  "orderDateTime": "2024-03-20T10:25:35",
+  "status": "CREATED"
+}

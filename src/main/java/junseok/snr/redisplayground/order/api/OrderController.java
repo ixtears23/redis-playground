@@ -1,5 +1,6 @@
 package junseok.snr.redisplayground.order.api;
 
+import junseok.snr.redisplayground.order.application.OrderDto;
 import junseok.snr.redisplayground.order.application.OrderService;
 import junseok.snr.redisplayground.order.domain.Order;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,11 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+    public ResponseEntity<Order> createOrder(@RequestBody OrderDto orderDto) {
+        final Order order = Order.from(orderDto);
+
         Order newOrder = orderService.createOrder(order);
+        orderService.sendOrderMessage(order);
         return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
     }
 }
