@@ -24,7 +24,7 @@ public class Order {
     private String orderDetails;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:sss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime orderDateTime;
     @Enumerated(EnumType.STRING)
     private Status status;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class OrderMessageReceiver {
 
     @SqsListener("DemoMainQueue")
-    public void receiveMessage(String message, @Header("SendId") String senderId) {
+    public void receiveMessage(String message, @Header(value = "SendId", required = false) String senderId) {
         log.info("=== Received Message : {} from senderId : {}", message, senderId);
     }
 }

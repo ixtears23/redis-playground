@@ -1,5 +1,7 @@
 package junseok.snr.redisplayground.order.application;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import junseok.snr.redisplayground.order.domain.Status;
 import junseok.snr.redisplayground.order.infrastructure.OrderRepository;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final SqsTemplate sqsTemplate;
+    private final ObjectMapper objectMapper;
 
     @Transactional
     public Order createOrder(Order order) {
@@ -23,8 +26,9 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.save(order);
     }
 
-    public void sendOrderMessage(Order order) {
+    public void sendOrderMessage(Order order) throws JsonProcessingException {
         final String queueName = "DemoMainQueue";
-        sqsTemplate.send(queueName, order);
+        String messagePayload = objectMapper.writeValueAsString(order);
+        sqsTemplate.send(queueName, messagePayload);
     }
 }

@@ -1,5 +1,6 @@
 package junseok.snr.redisplayground.order.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import junseok.snr.redisplayground.order.application.OrderDto;
 import junseok.snr.redisplayground.order.application.OrderService;
 import junseok.snr.redisplayground.order.domain.Order;
@@ -18,7 +19,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody OrderDto orderDto) {
+    public ResponseEntity<Order> createOrder(@RequestBody OrderDto orderDto) throws JsonProcessingException {
         final Order order = Order.from(orderDto);
 
         Order newOrder = orderService.createOrder(order);
