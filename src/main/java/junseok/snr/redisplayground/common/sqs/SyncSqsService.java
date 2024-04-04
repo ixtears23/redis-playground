@@ -26,9 +26,7 @@ public class SyncSqsService implements SqsService {
 
     @Override
     public List<String> getQueues() {
-        final String prefix = "que";
         final ListQueuesRequest listQueuesRequest = ListQueuesRequest.builder()
-                .queueNamePrefix(prefix)
                 .build();
 
         final ListQueuesResponse listQueuesResponse = sqsClient.listQueues(listQueuesRequest);
@@ -55,6 +53,12 @@ public class SyncSqsService implements SqsService {
                 .queueName(queueName)
                 .build());
         return getQueueUrlResponse.queueUrl();
+    }
+
+    @Override
+    public void sendBatchMessages(SendMessageBatchRequest sendMessageBatchRequest) {
+
+        sqsClient.sendMessageBatch(sendMessageBatchRequest);
     }
 
 
