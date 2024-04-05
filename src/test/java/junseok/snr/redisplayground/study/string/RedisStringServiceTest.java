@@ -1,5 +1,6 @@
 package junseok.snr.redisplayground.study.string;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ class RedisStringServiceTest {
     @Autowired
     private RedisStringService redisStringService;
 
+    @DisplayName("")
     @Test
     void setValue() {
         final String key = "junseok";
