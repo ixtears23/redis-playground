@@ -61,6 +61,11 @@ public class SyncSqsService implements SqsService {
         sqsClient.sendMessageBatch(sendMessageBatchRequest);
     }
 
+    @Override
+    public void sendMessage(SendMessageRequest sendMessageRequest) {
+        sqsClient.sendMessage(sendMessageRequest);
+    }
+
 
 
 }
