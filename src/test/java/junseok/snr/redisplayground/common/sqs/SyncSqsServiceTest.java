@@ -81,7 +81,7 @@ class SyncSqsServiceTest {
                 .delaySeconds(5)
                 .build();
 
-        sqsClient.sendMessage(sendMessageRequest);
+        syncSqsService.sendMessage(sendMessageRequest);
 
     }
 
