@@ -66,6 +66,18 @@ public class SyncSqsService implements SqsService {
         sqsClient.sendMessage(sendMessageRequest);
     }
 
+    @Override
+    public List<String> receiveMessage(ReceiveMessageRequest receiveMessageRequest) {
+        final List<Message> messages = sqsClient.receiveMessage(receiveMessageRequest).messages();
+
+        final List<String> messageList = messages.stream()
+                .map(Message::body)
+                .toList();
+
+        messageList.forEach(messageBody -> log.info("=== received messageBody :: {}", messageBody));
+
+        return messageList;
+    }
 
 
 }

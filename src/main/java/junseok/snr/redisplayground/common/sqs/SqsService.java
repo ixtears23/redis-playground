@@ -1,5 +1,7 @@
 package junseok.snr.redisplayground.common.sqs;
 
+import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
+import software.amazon.awssdk.services.sqs.model.ReceiveMessageResponse;
 import software.amazon.awssdk.services.sqs.model.SendMessageBatchRequest;
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 
@@ -17,4 +19,6 @@ public interface SqsService {
     void sendBatchMessages(SendMessageBatchRequest sendMessageBatchRequest);
 
     void sendMessage(SendMessageRequest sendMessageRequest);
+
+    List<String> receiveMessage(ReceiveMessageRequest receiveMessageRequest);
 }

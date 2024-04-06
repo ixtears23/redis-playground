@@ -67,7 +67,7 @@ class SyncSqsServiceTest {
         syncSqsService.sendBatchMessages(sendMessageBatchRequest);
     }
 
-    @DisplayName("sqs 대기열에 메세지 전송")
+    @DisplayName("sqs 대기열에 메세지가 전송되어야 한다.")
     @Test
     void sendSqsQueueTest() {
         final String queueName = "send-message-queue";
@@ -82,7 +82,25 @@ class SyncSqsServiceTest {
                 .build();
 
         syncSqsService.sendMessage(sendMessageRequest);
+    }
 
+
+    @DisplayName("sqs 대기열에서 메세지를 수신해야 한다.")
+    @Test
+    void receiveSqsQueueMessageTest()  {
+        final String queueName = "send-message-queue";
+        syncSqsService.createQueue(queueName);
+
+        final String queueUrl = syncSqsService.getQueueUrl(queueName);
+
+        final ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder()
+                .queueUrl(queueUrl)
+                .maxNumberOfMessages(3)
+                .build();
+
+        final List<String> messages = syncSqsService.receiveMessage(receiveMessageRequest);
+
+        assertThat(messages).isNotEmpty();
     }
 
 }
