@@ -67,7 +67,7 @@ public class SyncSqsService implements SqsService {
     }
 
     @Override
-    public List<String> receiveMessage(ReceiveMessageRequest receiveMessageRequest) {
+    public List<String> receiveStringMessageList(ReceiveMessageRequest receiveMessageRequest) {
         final List<Message> messages = sqsClient.receiveMessage(receiveMessageRequest).messages();
 
         final List<String> messageList = messages.stream()
@@ -77,6 +77,33 @@ public class SyncSqsService implements SqsService {
         messageList.forEach(messageBody -> log.info("=== received messageBody :: {}", messageBody));
 
         return messageList;
+    }
+
+    @Override
+    public List<Message> receiveMessageList(String queueUrl, int maxNumberOfMessages) {
+        log.info("=== receiveMessageList - queueUrl : {}, maxNumberOfMessages : {}", queueUrl, maxNumberOfMessages);
+        final ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder()
+                .queueUrl(queueUrl)
+                .maxNumberOfMessages(maxNumberOfMessages)
+                .waitTimeSeconds(3)
+                .build();
+
+        final List<Message> messages = sqsClient.receiveMessage(receiveMessageRequest).messages();
+        log.info("=== received Messages : {}", messages);
+
+        return messages;
+    }
+
+    @Override
+    public void deleteMessage(String queueUrl, String receiptHandle) {
+        log.info("=== deleteMessage - queueUrl : {}, receiptHandle : {}", queueUrl, receiptHandle);
+        final DeleteMessageRequest deleteMessageRequest = DeleteMessageRequest.builder()
+                .queueUrl(queueUrl)
+                .receiptHandle(receiptHandle)
+                .build();
+
+        final DeleteMessageResponse deleteMessageResponse = sqsClient.deleteMessage(deleteMessageRequest);
+        log.info("=== deletedMessage - {}", deleteMessageResponse);
     }
 
 

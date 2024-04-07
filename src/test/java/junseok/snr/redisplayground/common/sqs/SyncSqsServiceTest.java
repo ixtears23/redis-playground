@@ -98,9 +98,38 @@ class SyncSqsServiceTest {
                 .maxNumberOfMessages(3)
                 .build();
 
-        final List<String> messages = syncSqsService.receiveMessage(receiveMessageRequest);
+        final List<String> messages = syncSqsService.receiveStringMessageList(receiveMessageRequest);
 
         assertThat(messages).isNotEmpty();
     }
 
+    @DisplayName("sqs 대기열에서 메세지를 삭제 해야 한다.")
+    @Test
+    void deleteSqsMessageTest() {
+        final String queueName = "send-message-queue";
+        syncSqsService.createQueue(queueName);
+
+        final String queueUrl = syncSqsService.getQueueUrl(queueName);
+        final int maxNumberOfMessages = 3;
+
+        final List<Message> messages = syncSqsService.receiveMessageList(queueUrl, maxNumberOfMessages);
+
+        for (Message message : messages) {
+
+            syncSqsService.deleteMessage(queueUrl, message.receiptHandle());
+        }
+    }
+
+    @Test
+    void receiveMessageListTest() {
+        final String queueName = "send-message-queue";
+        syncSqsService.createQueue(queueName);
+
+        final String queueUrl = syncSqsService.getQueueUrl(queueName);
+        final int maxNumberOfMessages = 3;
+
+        final List<Message> messages = syncSqsService.receiveMessageList(queueUrl, maxNumberOfMessages);
+
+        assertThat(messages).isNotEmpty();
+    }
 }
