@@ -4,19 +4,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.sqs.model.*;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class SyncSqsServiceTest {
     @Autowired
     private SyncSqsService syncSqsService;
-    @Autowired
-    private SqsClient sqsClient;
 
     @DisplayName("sqs queue 목록을 프린트 한다.")
     @Test
